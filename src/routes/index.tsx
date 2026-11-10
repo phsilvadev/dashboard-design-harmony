@@ -70,7 +70,7 @@ function Donut() {
 function Dashboard() {
   return (
     <div className="flex min-h-screen bg-background font-sans text-foreground">
-      <aside className="hidden w-64 shrink-0 flex-col bg-sidebar p-5 text-sidebar-foreground md:flex" style={{ background: "var(--gradient-glow)" }}>
+      <aside className="hidden w-64 shrink-0 flex-col bg-sidebar p-5 text-sidebar-foreground md:flex">
         <div className="mb-10 flex items-center gap-2 px-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
             <MessageSquare className="h-4 w-4" />
@@ -116,7 +116,7 @@ function Dashboard() {
         </header>
 
         <div className="space-y-6 px-6 pb-10 lg:px-10">
-          <section className="relative overflow-hidden rounded-3xl p-8 text-graphite-foreground" style={{ background: "var(--gradient-glow)" }}>
+          <section className="relative overflow-hidden rounded-3xl bg-graphite p-8 text-graphite-foreground">
             <span className="inline-flex items-center gap-2 rounded-full border border-graphite-foreground/15 bg-graphite-foreground/5 px-3 py-1 text-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Boas conversas. Novos negócios.
             </span>
