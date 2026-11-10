@@ -31,3 +31,4 @@ use the editor.
 
 - Keep shared navigation in the root shell and page content in leaf routes so the dashboard and inbox use the same navigation.
 - Keep the inbox prototype's conversation state in React memory; no external messaging or persistent storage is implied by the visual prototype.
+- Centralize inbox ownership transitions in attendance-flow so controls and reply guards share the same AI-to-human handoff rules.
