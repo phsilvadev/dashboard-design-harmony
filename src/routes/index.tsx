@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import {
   LayoutDashboard, MessageSquare, Users, BarChart3, Settings, LifeBuoy, Plus, Bell, Search,
   ArrowUpRight, ArrowDownRight, Clock, CheckCircle2, Inbox, Sparkles,
@@ -17,14 +18,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Dashboard,
 });
-
-const nav = [
-  { icon: LayoutDashboard, label: "Painel", active: true },
-  { icon: MessageSquare, label: "Atendimentos" },
-  { icon: Users, label: "Contatos" },
-  { icon: BarChart3, label: "Relatórios" },
-  { icon: Settings, label: "Configurações" },
-];
 
 const stats = [
   { icon: Inbox, label: "Atendimentos hoje", value: "128", delta: "+12%", up: true },
@@ -69,33 +62,7 @@ function Donut() {
 
 function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-background font-sans text-foreground">
-      <aside className="hidden w-64 shrink-0 flex-col bg-sidebar p-5 text-sidebar-foreground md:flex">
-        <div className="mb-10 flex items-center gap-2 px-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <MessageSquare className="h-4 w-4" />
-          </div>
-          <span className="text-lg font-semibold text-sidebar-accent-foreground">AtendeHub</span>
-        </div>
-        <nav className="flex flex-col gap-1">
-          {nav.map(({ icon: Icon, label, active }) => (
-            <a key={label} href="#"
-              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
-                active ? "bg-sidebar-accent text-sidebar-accent-foreground" : "hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground"}`}>
-              <Icon className={`h-4 w-4 ${active ? "text-primary" : ""}`} />
-              {label}
-            </a>
-          ))}
-        </nav>
-        <div className="mt-auto rounded-2xl border border-sidebar-border bg-sidebar-accent/50 p-4">
-          <p className="text-sm font-semibold text-sidebar-accent-foreground">Precisa de ajuda?</p>
-          <p className="mt-1 text-xs">Nossa equipe responde rapidinho.</p>
-          <button className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-            <LifeBuoy className="h-4 w-4" /> Suporte
-          </button>
-        </div>
-      </aside>
-
+    <div>
       <main className="flex-1 overflow-x-hidden">
         <div className="flex items-center justify-center gap-3 bg-graphite px-4 py-2 text-sm text-graphite-foreground">
           <span className="h-2 w-2 rounded-full bg-primary" />
@@ -125,12 +92,8 @@ function Dashboard() {
               Você tem 12 conversas aguardando resposta. Vamos começar?
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-                <Plus className="h-4 w-4" /> Novo atendimento
-              </button>
-              <button className="inline-flex items-center gap-2 rounded-full border border-graphite-foreground/20 px-5 py-2.5 text-sm font-medium hover:bg-graphite-foreground/10">
-                Ver fila →
-              </button>
+              <Button asChild className="rounded-full px-5"><Link to="/atendimentos"><Plus /> Novo atendimento</Link></Button>
+              <Button asChild variant="ghost" className="rounded-full border border-graphite-foreground/20 px-5 hover:bg-graphite-foreground/10 hover:text-graphite-foreground"><Link to="/atendimentos">Ver fila →</Link></Button>
             </div>
             <Sparkles className="absolute -right-4 -top-4 h-40 w-40 text-primary/10" />
           </section>
@@ -175,7 +138,7 @@ function Dashboard() {
                   <h2 className="text-base font-semibold">Conversas recentes</h2>
                   <p className="text-sm text-muted-foreground">Responda sem sair do painel</p>
                 </div>
-                <a href="#" className="text-sm font-medium text-accent-foreground hover:underline">Ver todas</a>
+                <Link to="/atendimentos" className="text-sm font-medium text-accent-foreground hover:underline">Ver todas</Link>
               </div>
               <ul className="mt-4 divide-y divide-border">
                 {recent.map((r) => (
