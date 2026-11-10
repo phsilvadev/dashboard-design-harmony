@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep shared navigation in the root shell and page content in leaf routes so the dashboard and inbox use the same navigation.
+- Keep the inbox prototype's conversation state in React memory; no external messaging or persistent storage is implied by the visual prototype.
